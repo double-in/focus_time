@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">@color/dark_primary</color>
+    <color name="primary_dark">@color/dark_primary_dark</color>
+    <color name="fragment_background">@color/dark_background</color>
+    <color name="bottom_nav_background">@color/dark_surface</color>
+    <color name="bottom_nav_selected">@color/dark_primary</color>
+    <color name="bottom_nav_unselected">#99FFFFFF</color>
+    
+    <color name="text_primary">@color/dark_text_primary</color>
+    <color name="text_secondary">@color/dark_text_secondary</color>
+    <color name="text_hint">#80FFFFFF</color>
+    
+    <color name="progress_track">#1FFFFFFF</color>
+    <color name="progress_indicator">@color/dark_primary</color>
+    
+    <color name="card_background">@color/dark_card</color>
+    <color name="card_stroke">#1FFFFFFF</color>
+</resources> 

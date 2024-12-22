@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Focus Timer</string>
+    
+    <!-- Timer States -->
+    <string name="stop">Stop</string>
+    <string name="resume">Resume</string>
+    <string name="start_break">Start Break</string>
+    <string name="start_focus">Start Focus</string>
+    <string name="plant_a_tree">Plant a Tree</string>
+    <string name="take_a_break">Take a Break (5min)</string>
+    <string name="take_a_long_break">Take a Long Break (15min)</string>
+    
+    <!-- Hints -->
+    <string name="tap_to_set_focus_duration">Tap to set focus duration</string>
+    <string name="short_break_hint">Short break (5 min)</string>
+    <string name="long_break_hint">Long break (15 min)</string>
+    
+    <!-- Tree States -->
+    <string name="tree_state_seed">A seed is planted</string>
+    <string name="tree_state_sprout">The seed starts to sprout</string>
+    <string name="tree_state_sapling">A small sapling emerges</string>
+    <string name="tree_state_growing">The tree is growing strong</string>
+    <string name="tree_state_mature">The tree is almost mature</string>
+    <string name="tree_state_blooming">Your tree is in full bloom!</string>
+    
+    <!-- Statistics -->
+    <string name="today">Today</string>
+    <string name="total">Total</string>
+    <string name="minutes">Minutes</string>
+    <string name="trees">Trees</string>
+    
+    <!-- Notifications -->
+    <string name="timer_complete">Timer Complete</string>
+    <string name="focus_session_complete">Focus session complete!</string>
+    <string name="channel_name">Timer Notifications</string>
+    <string name="channel_description">Notifications for timer events</string>
+</resources>

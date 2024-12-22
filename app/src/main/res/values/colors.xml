@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light Theme Colors -->
+    <color name="primary">#4CAF50</color>
+    <color name="primary_dark">#388E3C</color>
+    <color name="secondary">#8BC34A</color>
+    <color name="secondary_dark">#689F38</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Dark Theme Colors -->
+    <color name="dark_primary">#69F0AE</color>
+    <color name="dark_primary_dark">#00C853</color>
+    <color name="dark_background">#121212</color>
+    <color name="dark_surface">#1E1E1E</color>
+    <color name="dark_card">#2D2D2D</color>
+    <color name="dark_text_primary">#E6FFFFFF</color>
+    <color name="dark_text_secondary">#99FFFFFF</color>
+    
+    <!-- Common Colors -->
+    <color name="fragment_background">@color/white</color>
+    <color name="bottom_nav_background">#FFFFFF</color>
+    <color name="bottom_nav_selected">@color/primary</color>
+    <color name="bottom_nav_unselected">#757575</color>
+</resources>
