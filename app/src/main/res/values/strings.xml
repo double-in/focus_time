@@ -31,8 +31,9 @@
     <string name="trees">Trees</string>
     
     <!-- Notifications -->
-    <string name="timer_complete">Timer Complete</string>
-    <string name="focus_session_complete">Focus session complete!</string>
-    <string name="channel_name">Timer Notifications</string>
-    <string name="channel_description">Notifications for timer events</string>
+    <string name="timer_complete">Focus Complete!</string>
+    <string name="focus_complete_short">Great job! You\'ve focused for %1$d minutes and planted %2$d trees.</string>
+    <string name="focus_complete_long">Amazing! You\'ve focused for %1$d hours %2$d minutes and planted %3$d trees.</string>
+    <string name="channel_name">Focus Timer</string>
+    <string name="channel_description">Notifications for focus timer events</string>
 </resources>

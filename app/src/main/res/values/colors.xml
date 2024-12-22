@@ -5,19 +5,19 @@
     <color name="black">#000000</color>
     
     <!-- Light Theme Colors -->
-    <color name="primary">#2E7D32</color>
+    <color name="primary">#FF6750A4</color>
     <color name="primary_variant">#1B5E20</color>
-    <color name="secondary">#66BB6A</color>
+    <color name="secondary">#FF625B71</color>
     <color name="secondary_variant">#43A047</color>
     
-    <color name="background">#F8F9FA</color>
-    <color name="surface">#FFFFFF</color>
+    <color name="background">#FFFFFBFE</color>
+    <color name="surface">#FFFFFBFE</color>
     <color name="card_background">#FFFFFF</color>
     
-    <color name="on_primary">#FFFFFF</color>
-    <color name="on_secondary">#000000</color>
-    <color name="on_background">#212121</color>
-    <color name="on_surface">#212121</color>
+    <color name="on_primary">#FFFFFFFF</color>
+    <color name="on_secondary">#FFFFFFFF</color>
+    <color name="on_background">#FF1C1B1F</color>
+    <color name="on_surface">#FF1C1B1F</color>
     
     <color name="text_primary">#212121</color>
     <color name="text_secondary">#757575</color>
@@ -39,4 +39,12 @@
     <color name="elevation_12dp">#FFFFFF</color>
     <color name="elevation_16dp">#FFFFFF</color>
     <color name="elevation_24dp">#FFFFFF</color>
+    
+    <color name="primary_container">#FFEADDFF</color>
+    <color name="on_primary_container">#FF21005D</color>
+    <color name="secondary_container">#FFE8DEF8</color>
+    <color name="on_secondary_container">#FF1D192B</color>
+    <color name="surface_variant">#FFE7E0EC</color>
+    <color name="on_surface_variant">#FF49454F</color>
+    <color name="outline">#FF79747E</color>
 </resources>

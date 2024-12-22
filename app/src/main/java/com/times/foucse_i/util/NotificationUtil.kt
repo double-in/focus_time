@@ -16,8 +16,8 @@ object NotificationUtil {
 
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "专注时钟"
-            val descriptionText = "专注时钟通知"
+            val name = context.getString(R.string.channel_name)
+            val descriptionText = context.getString(R.string.channel_description)
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
@@ -28,11 +28,26 @@ object NotificationUtil {
         }
     }
 
-    fun showTimerCompleteNotification(context: Context) {
+    fun showTimerCompleteNotification(context: Context, focusMinutes: Int, treesPlanted: Int) {
+        val title = context.getString(R.string.timer_complete)
+        val message = when {
+            focusMinutes >= 60 -> context.getString(
+                R.string.focus_complete_long,
+                focusMinutes / 60,
+                focusMinutes % 60,
+                treesPlanted
+            )
+            else -> context.getString(
+                R.string.focus_complete_short,
+                focusMinutes,
+                treesPlanted
+            )
+        }
+
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification)
-            .setContentTitle("专注完成")
-            .setContentText("太棒了！你已经完成了25分钟的专注")
+            .setContentTitle(title)
+            .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setAutoCancel(true)
 

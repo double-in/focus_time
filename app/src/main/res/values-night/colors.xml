@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#80CBC4</color>
-    <color name="primary_variant">#4F9A94</color>
-    <color name="secondary">#B2DFDB</color>
-    <color name="secondary_variant">#82ABA6</color>
-    
-    <color name="background">#121212</color>
-    <color name="surface">#1E1E1E</color>
-    <color name="card_background">#242424</color>
-    
-    <color name="on_primary">#000000</color>
-    <color name="on_secondary">#000000</color>
-    <color name="on_background">#E0E0E0</color>
-    <color name="on_surface">#E0E0E0</color>
-    
-    <color name="text_primary">#E0E0E0</color>
-    <color name="text_secondary">#B0B0B0</color>
-    <color name="text_hint">#808080</color>
-    
-    <color name="fragment_background">@color/background</color>
-    <color name="bottom_nav_background">#1A1A1A</color>
-    <color name="card_stroke">#1FFFFFFF</color>
+    <color name="primary">#FFD0BCFF</color>
+    <color name="primary_container">#FF4F378B</color>
+    <color name="on_primary">#FF381E72</color>
+    <color name="on_primary_container">#FFEADDFF</color>
+    <color name="secondary">#FFCCC2DC</color>
+    <color name="secondary_container">#FF4A4458</color>
+    <color name="on_secondary">#FF332D41</color>
+    <color name="on_secondary_container">#FFE8DEF8</color>
+    <color name="surface">#FF1C1B1F</color>
+    <color name="surface_variant">#FF49454F</color>
+    <color name="on_surface">#FFE6E1E5</color>
+    <color name="on_surface_variant">#FFCAC4D0</color>
+    <color name="background">#FF1C1B1F</color>
+    <color name="on_background">#FFE6E1E5</color>
+    <color name="outline">#FF938F99</color>
 </resources> 

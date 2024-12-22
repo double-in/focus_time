@@ -1,6 +1,7 @@
 package com.times.foucse_i.ui.timer
 
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -145,6 +146,7 @@ class TimerFragment : BaseFragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n", "DefaultLocale")
     private fun updateUI(state: TimerUiState) {
         // 更新时间显示
         val minutes = state.remainingTime / 60
@@ -195,7 +197,11 @@ class TimerFragment : BaseFragment() {
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
                 context?.let {
                     SoundUtil.playTimerCompleteSound(it)
-                    NotificationUtil.showTimerCompleteNotification(it)
+                    NotificationUtil.showTimerCompleteNotification(
+                        it,
+                        state.focusMinutes,
+                        state.totalTrees
+                    )
                     NotificationUtil.vibrate(it)
                 }
             }
@@ -206,7 +212,11 @@ class TimerFragment : BaseFragment() {
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
                 context?.let {
                     SoundUtil.playTimerCompleteSound(it)
-                    NotificationUtil.showTimerCompleteNotification(it)
+                    NotificationUtil.showTimerCompleteNotification(
+                        it,
+                        state.focusMinutes,
+                        state.totalTrees
+                    )
                     NotificationUtil.vibrate(it)
                 }
             }
