@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.times.foucse_i.data.db.entity.FocusSession
+import com.times.foucse_i.ui.timer.TreeGrowthState
 
 @Dao
 interface FocusSessionDao {
@@ -24,4 +25,19 @@ interface FocusSessionDao {
 
     @Query("SELECT COUNT(*) FROM focus_sessions")
     suspend fun getTotalSessionsCount(): Int
+
+    @Query("SELECT COALESCE(SUM(duration), 0) FROM focus_sessions WHERE completed = 1 AND startTime >= :startTime")
+    suspend fun getFocusTimeAfter(startTime: Long): Long
+
+    @Query("SELECT COALESCE(AVG(duration), 0) FROM focus_sessions WHERE completed = 1")
+    suspend fun getAverageFocusTime(): Long
+
+    @Query("SELECT COUNT(*) FROM focus_sessions WHERE completed = 1 AND treeGrowthState = :state")
+    suspend fun getTreeCountByState(state: TreeGrowthState): Int
+
+    @Query("SELECT MAX(duration) FROM focus_sessions WHERE completed = 1")
+    suspend fun getLongestSession(): Long
+
+    @Query("SELECT COUNT(*) FROM focus_sessions WHERE completed = 1 GROUP BY date(startTime/1000, 'unixepoch') ORDER BY COUNT(*) DESC LIMIT 1")
+    suspend fun getMostProductiveDay(): Int
 } 

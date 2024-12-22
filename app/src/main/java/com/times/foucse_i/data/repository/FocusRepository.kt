@@ -71,4 +71,56 @@ class FocusRepository @Inject constructor(
             0
         }
     }
+
+    suspend fun getWeeklyFocusTime(): Long {
+        return try {
+            val calendar = Calendar.getInstance()
+            calendar.add(Calendar.DAY_OF_YEAR, -7)
+            focusSessionDao.getFocusTimeAfter(calendar.timeInMillis)
+        } catch (e: Exception) {
+            0L
+        }
+    }
+
+    suspend fun getMonthlyFocusTime(): Long {
+        return try {
+            val calendar = Calendar.getInstance()
+            calendar.add(Calendar.MONTH, -1)
+            focusSessionDao.getFocusTimeAfter(calendar.timeInMillis)
+        } catch (e: Exception) {
+            0L
+        }
+    }
+
+    suspend fun getAverageFocusTime(): Long {
+        return try {
+            focusSessionDao.getAverageFocusTime()
+        } catch (e: Exception) {
+            0L
+        }
+    }
+
+    suspend fun getTreeCountByState(state: TreeGrowthState): Int {
+        return try {
+            focusSessionDao.getTreeCountByState(state)
+        } catch (e: Exception) {
+            0
+        }
+    }
+
+    suspend fun getLongestSession(): Long {
+        return try {
+            focusSessionDao.getLongestSession()
+        } catch (e: Exception) {
+            0L
+        }
+    }
+
+    suspend fun getMostProductiveDay(): Int {
+        return try {
+            focusSessionDao.getMostProductiveDay()
+        } catch (e: Exception) {
+            0
+        }
+    }
 } 

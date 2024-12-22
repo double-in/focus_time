@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.times.foucse_i.R
 import com.times.foucse_i.databinding.FragmentStatsBinding
 import com.times.foucse_i.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,25 +44,28 @@ class StatsFragment : BaseFragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.totalFocusTime.observe(viewLifecycleOwner) { totalTime ->
-            binding.totalFocusTime.text = formatTime(totalTime)
-        }
+        viewModel.statsData.observe(viewLifecycleOwner) { stats ->
+            // 更新总览
+            binding.totalFocusTime.text = viewModel.formatDuration(stats.totalFocusTime / 60)
+            binding.totalSessions.text = stats.totalSessions.toString()
 
-        viewModel.treesPlanted.observe(viewLifecycleOwner) { trees ->
-            binding.treesPlantedCount.text = trees.toString()
+            // 更新时间统计
+            binding.weeklyFocusTime.text = viewModel.formatDuration(stats.weeklyFocusTime / 60)
+            binding.monthlyFocusTime.text = viewModel.formatDuration(stats.monthlyFocusTime / 60)
+            binding.averageFocusTime.text = viewModel.formatDuration(stats.averageFocusTime / 60)
+            binding.longestSession.text = viewModel.formatDuration(stats.longestSession / 60)
+
+            // 更新树木统计
+            binding.seedTrees.text = stats.seedTrees.toString()
+            binding.sproutTrees.text = stats.sproutTrees.toString()
+            binding.saplingTrees.text = stats.saplingTrees.toString()
+            binding.growingTrees.text = stats.growingTrees.toString()
+            binding.matureTrees.text = stats.matureTrees.toString()
+            binding.bloomingTrees.text = stats.bloomingTrees.toString()
         }
 
         viewModel.recentSessions.observe(viewLifecycleOwner) { sessions ->
             sessionsAdapter.submitList(sessions)
-        }
-    }
-
-    private fun formatTime(minutes: Long): String {
-        val hours = minutes / 60
-        val remainingMinutes = minutes % 60
-        return when {
-            hours > 0 -> "$hours h $remainingMinutes min"
-            else -> "$remainingMinutes min"
         }
     }
 
