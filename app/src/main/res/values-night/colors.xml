@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">@color/dark_primary</color>
-    <color name="primary_dark">@color/dark_primary_dark</color>
-    <color name="fragment_background">@color/dark_background</color>
-    <color name="bottom_nav_background">@color/dark_surface</color>
-    <color name="bottom_nav_selected">@color/dark_primary</color>
-    <color name="bottom_nav_unselected">#99FFFFFF</color>
+    <color name="primary">#80CBC4</color>
+    <color name="primary_variant">#4F9A94</color>
+    <color name="secondary">#B2DFDB</color>
+    <color name="secondary_variant">#82ABA6</color>
     
-    <color name="text_primary">@color/dark_text_primary</color>
-    <color name="text_secondary">@color/dark_text_secondary</color>
-    <color name="text_hint">#80FFFFFF</color>
+    <color name="background">#121212</color>
+    <color name="surface">#1E1E1E</color>
+    <color name="card_background">#242424</color>
     
-    <color name="progress_track">#1FFFFFFF</color>
-    <color name="progress_indicator">@color/dark_primary</color>
+    <color name="on_primary">#000000</color>
+    <color name="on_secondary">#000000</color>
+    <color name="on_background">#E0E0E0</color>
+    <color name="on_surface">#E0E0E0</color>
     
-    <color name="card_background">@color/dark_card</color>
+    <color name="text_primary">#E0E0E0</color>
+    <color name="text_secondary">#B0B0B0</color>
+    <color name="text_hint">#808080</color>
+    
+    <color name="fragment_background">@color/background</color>
+    <color name="bottom_nav_background">#1A1A1A</color>
     <color name="card_stroke">#1FFFFFFF</color>
 </resources> 

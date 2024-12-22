@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Basic Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    
     <!-- Light Theme Colors -->
-    <color name="primary">#4CAF50</color>
-    <color name="primary_dark">#388E3C</color>
-    <color name="secondary">#8BC34A</color>
-    <color name="secondary_dark">#689F38</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#2E7D32</color>
+    <color name="primary_variant">#1B5E20</color>
+    <color name="secondary">#66BB6A</color>
+    <color name="secondary_variant">#43A047</color>
     
-    <!-- Dark Theme Colors -->
-    <color name="dark_primary">#69F0AE</color>
-    <color name="dark_primary_dark">#00C853</color>
-    <color name="dark_background">#121212</color>
-    <color name="dark_surface">#1E1E1E</color>
-    <color name="dark_card">#2D2D2D</color>
-    <color name="dark_text_primary">#E6FFFFFF</color>
-    <color name="dark_text_secondary">#99FFFFFF</color>
+    <color name="background">#F8F9FA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="card_background">#FFFFFF</color>
     
-    <!-- Common Colors -->
-    <color name="fragment_background">@color/white</color>
-    <color name="bottom_nav_background">#FFFFFF</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_secondary">#000000</color>
+    <color name="on_background">#212121</color>
+    <color name="on_surface">#212121</color>
+    
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#9E9E9E</color>
+    
+    <color name="fragment_background">@color/background</color>
+    <color name="bottom_nav_background">@color/surface</color>
     <color name="bottom_nav_selected">@color/primary</color>
     <color name="bottom_nav_unselected">#757575</color>
+    <color name="card_stroke">#1F000000</color>
+    
+    <!-- Elevation Overlays -->
+    <color name="elevation_01dp">#FFFFFF</color>
+    <color name="elevation_02dp">#FFFFFF</color>
+    <color name="elevation_03dp">#FFFFFF</color>
+    <color name="elevation_04dp">#FFFFFF</color>
+    <color name="elevation_06dp">#FFFFFF</color>
+    <color name="elevation_08dp">#FFFFFF</color>
+    <color name="elevation_12dp">#FFFFFF</color>
+    <color name="elevation_16dp">#FFFFFF</color>
+    <color name="elevation_24dp">#FFFFFF</color>
 </resources>
