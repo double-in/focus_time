@@ -30,10 +30,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupSystemBars() {
-        // 设置系统栏
         WindowUtil.setupImmersiveMode(window)
         
-        // 处理系统栏间距
         WindowUtil.applySystemBarInsets(binding.root) { statusBarHeight, navigationBarHeight ->
             binding.statusBarSpace.layoutParams.height = statusBarHeight
             binding.statusBarSpace.requestLayout()
