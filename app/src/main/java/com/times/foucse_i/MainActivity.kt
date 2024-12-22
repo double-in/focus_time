@@ -18,11 +18,27 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        WindowUtil.setupImmersiveMode(window)
+        setupNavigation()
+        setupSystemBars()
+    }
 
+    private fun setupNavigation() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavView.setupWithNavController(navController)
+    }
+
+    private fun setupSystemBars() {
+        // 设置系统栏
+        WindowUtil.setupImmersiveMode(window)
+        
+        // 处理系统栏间距
+        WindowUtil.applySystemBarInsets(binding.root) { statusBarHeight, navigationBarHeight ->
+            binding.statusBarSpace.layoutParams.height = statusBarHeight
+            binding.statusBarSpace.requestLayout()
+            binding.navigationBarSpace.layoutParams.height = navigationBarHeight
+            binding.navigationBarSpace.requestLayout()
+        }
     }
 }

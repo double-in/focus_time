@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import com.times.foucse_i.R
 import com.times.foucse_i.databinding.FragmentTimerBinding
@@ -40,7 +38,7 @@ class TimerFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
         observeState()
-        setupWindowInsets()
+//        setupWindowInsets()
     }
 
     override fun onDestroyView() {
@@ -64,10 +62,6 @@ class TimerFragment : BaseFragment() {
         binding.pauseButton.setOnClickListener {
             viewModel.pauseTimer()
         }
-
-        activity?.window?.let { window ->
-            WindowUtil.setupImmersiveMode(window)
-        }
     }
 
     private fun observeState() {
@@ -76,7 +70,7 @@ class TimerFragment : BaseFragment() {
         }
     }
 
-    @SuppressLint("SetTextI18n", "DefaultLocale")
+    @SuppressLint("SetTextI18s", "DefaultLocale")
     private fun updateUI(state: TimerUiState) {
         // 更新时间显示
         val minutes = state.remainingTime / 60
@@ -192,14 +186,6 @@ class TimerFragment : BaseFragment() {
         binding.treeStateText.text = treeDescription
     }
 
-    private fun setupWindowInsets() {
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, windowInsets ->
-            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            binding.statusBarSpace.layoutParams.height = insets.top
-            binding.statusBarSpace.requestLayout()
-            windowInsets
-        }
-    }
 
     companion object {
         fun newInstance() = TimerFragment()
