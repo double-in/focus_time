@@ -7,9 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.viewModels
 import com.times.foucse_i.R
-import com.times.foucse_i.data.preferences.FocusPreferences
 import com.times.foucse_i.databinding.FragmentTimerBinding
 import com.times.foucse_i.ui.base.BaseFragment
 import com.times.foucse_i.util.NotificationUtil
@@ -39,6 +40,7 @@ class TimerFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupUI()
         observeState()
+        setupWindowInsets()
     }
 
     override fun onDestroyView() {
@@ -63,80 +65,8 @@ class TimerFragment : BaseFragment() {
             viewModel.pauseTimer()
         }
 
-        binding.timerContainer.setOnClickListener {
-            if (viewModel.uiState.value?.timerState is TimerState.Idle) {
-                toggleTimePickerVisibility()
-            }
-        }
-
-        setupTimePicker()
-
-        // 设置沉浸式模式
         activity?.window?.let { window ->
             WindowUtil.setupImmersiveMode(window)
-        }
-    }
-
-    private fun setupTimePicker() {
-        binding.timeSlider.apply {
-            valueFrom = FocusPreferences.MIN_FOCUS_MINUTES.toFloat()
-            valueTo = FocusPreferences.MAX_FOCUS_MINUTES.toFloat()
-            value = viewModel.uiState.value?.focusMinutes?.toFloat() ?: FocusPreferences.DEFAULT_FOCUS_MINUTES.toFloat()
-            
-            addOnChangeListener { _, value, fromUser ->
-                if (fromUser) {
-                    viewModel.setFocusMinutes(value.toInt())
-                }
-            }
-        }
-
-        binding.decreaseButton.setOnClickListener {
-            val newValue = (binding.timeSlider.value - 1)
-                .coerceIn(binding.timeSlider.valueFrom, binding.timeSlider.valueTo)
-            binding.timeSlider.value = newValue
-            viewModel.setFocusMinutes(newValue.toInt())
-        }
-
-        binding.increaseButton.setOnClickListener {
-            val newValue = (binding.timeSlider.value + 1)
-                .coerceIn(binding.timeSlider.valueFrom, binding.timeSlider.valueTo)
-            binding.timeSlider.value = newValue
-            viewModel.setFocusMinutes(newValue.toInt())
-        }
-
-        binding.quickTime25.setOnClickListener {
-            binding.timeSlider.value = 25f
-            viewModel.setFocusMinutes(25)
-        }
-
-        binding.quickTime45.setOnClickListener {
-            binding.timeSlider.value = 45f
-            viewModel.setFocusMinutes(45)
-        }
-
-        binding.quickTime60.setOnClickListener {
-            binding.timeSlider.value = 60f
-            viewModel.setFocusMinutes(60)
-        }
-    }
-
-    private fun toggleTimePickerVisibility() {
-        binding.timePickerContainer.apply {
-            if (visibility == View.VISIBLE) {
-                animate()
-                    .alpha(0f)
-                    .setDuration(200)
-                    .withEndAction {
-                        visibility = View.GONE
-                        alpha = 1f
-                    }
-            } else {
-                visibility = View.VISIBLE
-                alpha = 0f
-                animate()
-                    .alpha(1f)
-                    .setDuration(200)
-            }
         }
     }
 
@@ -181,19 +111,16 @@ class TimerFragment : BaseFragment() {
             is TimerState.Running -> {
                 binding.startButton.text = getString(R.string.stop)
                 binding.pauseButton.visibility = View.VISIBLE
-                binding.tapHintText.visibility = View.GONE
                 activity?.window?.let { WindowUtil.enterFocusMode(it) }
             }
             is TimerState.Paused -> {
                 binding.startButton.text = getString(R.string.resume)
                 binding.pauseButton.visibility = View.GONE
-                binding.tapHintText.visibility = View.GONE
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
             }
             is TimerState.Finished.Focus -> {
                 binding.startButton.text = getString(R.string.start_break)
                 binding.pauseButton.visibility = View.GONE
-                binding.tapHintText.visibility = View.VISIBLE
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
                 context?.let {
                     SoundUtil.playTimerCompleteSound(it)
@@ -208,7 +135,6 @@ class TimerFragment : BaseFragment() {
             is TimerState.Finished.ShortBreak, is TimerState.Finished.LongBreak -> {
                 binding.startButton.text = getString(R.string.start_focus)
                 binding.pauseButton.visibility = View.GONE
-                binding.tapHintText.visibility = View.VISIBLE
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
                 context?.let {
                     SoundUtil.playTimerCompleteSound(it)
@@ -227,12 +153,6 @@ class TimerFragment : BaseFragment() {
                     TimerType.LONG_BREAK -> getString(R.string.take_a_long_break)
                 }
                 binding.pauseButton.visibility = View.GONE
-                binding.tapHintText.visibility = View.VISIBLE
-                binding.tapHintText.text = when (state.timerType) {
-                    TimerType.FOCUS -> getString(R.string.tap_to_set_focus_duration)
-                    TimerType.SHORT_BREAK -> getString(R.string.short_break_hint)
-                    TimerType.LONG_BREAK -> getString(R.string.long_break_hint)
-                }
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
             }
         }
@@ -276,6 +196,15 @@ class TimerFragment : BaseFragment() {
             start()
         }
         binding.treeStateText.text = treeDescription
+    }
+
+    private fun setupWindowInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            binding.statusBarSpace.layoutParams.height = insets.top
+            binding.statusBarSpace.requestLayout()
+            windowInsets
+        }
     }
 
     companion object {

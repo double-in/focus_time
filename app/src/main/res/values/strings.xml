@@ -5,11 +5,12 @@
     <!-- Timer States -->
     <string name="stop">Stop</string>
     <string name="resume">Resume</string>
+    <string name="pause">Pause</string>
     <string name="start_break">Start Break</string>
     <string name="start_focus">Start Focus</string>
     <string name="plant_a_tree">Plant a Tree</string>
-    <string name="take_a_break">Take a Break (5min)</string>
-    <string name="take_a_long_break">Take a Long Break (15min)</string>
+    <string name="take_a_break">Take a Break</string>
+    <string name="take_a_long_break">Take a Long Break</string>
     
     <!-- Hints -->
     <string name="tap_to_set_focus_duration">Tap to set focus duration</string>
@@ -17,21 +18,22 @@
     <string name="long_break_hint">Long break (15 min)</string>
     
     <!-- Tree States -->
-    <string name="tree_state_seed">A seed is planted</string>
-    <string name="tree_state_sprout">The seed starts to sprout</string>
-    <string name="tree_state_sapling">A small sapling emerges</string>
-    <string name="tree_state_growing">The tree is growing strong</string>
-    <string name="tree_state_mature">The tree is almost mature</string>
-    <string name="tree_state_blooming">Your tree is in full bloom!</string>
+    <string name="tree_state_seed">Seed</string>
+    <string name="tree_state_sprout">Sprout</string>
+    <string name="tree_state_sapling">Sapling</string>
+    <string name="tree_state_growing">Growing</string>
+    <string name="tree_state_mature">Mature</string>
+    <string name="tree_state_blooming">Blooming</string>
     
     <!-- Statistics -->
-    <string name="today">Today</string>
-    <string name="total">Total</string>
-    <string name="minutes">Minutes</string>
-    <string name="trees">Trees</string>
+    <string name="today_sessions">Today\'s Sessions</string>
+    <string name="total_sessions">Total Sessions</string>
+    <string name="total_minutes">Total Minutes</string>
+    <string name="total_trees">Total Trees</string>
     
     <!-- Notifications -->
-    <string name="timer_complete">Focus Complete!</string>
+    <string name="timer_complete">Timer Complete</string>
+    <string name="focus_complete">Great job! You\'ve focused for %1$d minutes.</string>
     <string name="focus_complete_short">Great job! You\'ve focused for %1$d minutes and planted %2$d trees.</string>
     <string name="focus_complete_long">Amazing! You\'ve focused for %1$d hours %2$d minutes and planted %3$d trees.</string>
     <string name="channel_name">Focus Timer</string>
