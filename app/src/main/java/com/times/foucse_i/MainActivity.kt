@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -79,5 +80,15 @@ class MainActivity : AppCompatActivity() {
             binding.navigationBarSpace.layoutParams.height = navigationBarHeight
             binding.navigationBarSpace.requestLayout()
         }
+    }
+
+    fun hideBottomNavigation() {
+        binding.bottomNavView.visibility = View.GONE
+        binding.navigationBarSpace.visibility = View.GONE
+    }
+
+    fun showBottomNavigation() {
+        binding.bottomNavView.visibility = View.VISIBLE
+        binding.navigationBarSpace.visibility = View.VISIBLE
     }
 }

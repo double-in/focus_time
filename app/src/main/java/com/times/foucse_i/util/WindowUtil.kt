@@ -15,15 +15,17 @@ object WindowUtil {
 
     fun enterFocusMode(window: Window) {
         WindowCompat.getInsetsController(window, window.decorView).apply {
-            // 隐藏状态栏
-            hide(WindowInsetsCompat.Type.statusBars())
+            // 隐藏状态栏和导航栏
+            hide(WindowInsetsCompat.Type.systemBars())
+            // 设置导航栏行为
+            systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
     }
 
     fun exitFocusMode(window: Window) {
         WindowCompat.getInsetsController(window, window.decorView).apply {
-            // 显示状态栏
-            show(WindowInsetsCompat.Type.statusBars())
+            // 显示状态栏和导航栏
+            show(WindowInsetsCompat.Type.systemBars())
         }
     }
 

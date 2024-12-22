@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.fragment.app.viewModels
+import com.times.foucse_i.MainActivity
 import com.times.foucse_i.R
 import com.times.foucse_i.databinding.FragmentTimerBinding
 import com.times.foucse_i.ui.base.BaseFragment
@@ -100,16 +101,19 @@ class TimerFragment : BaseFragment() {
                 binding.startButton.text = getString(R.string.stop)
                 binding.pauseButton.visibility = View.VISIBLE
                 activity?.window?.let { WindowUtil.enterFocusMode(it) }
+                (activity as? MainActivity)?.hideBottomNavigation()
             }
             is TimerState.Paused -> {
                 binding.startButton.text = getString(R.string.resume)
                 binding.pauseButton.visibility = View.GONE
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
+                (activity as? MainActivity)?.showBottomNavigation()
             }
             is TimerState.Finished.Focus -> {
                 binding.startButton.text = getString(R.string.start_break)
                 binding.pauseButton.visibility = View.GONE
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
+                (activity as? MainActivity)?.showBottomNavigation()
                 context?.let {
                     if (state.notificationsEnabled) {
                         NotificationUtil.showTimerCompleteNotification(
@@ -127,6 +131,7 @@ class TimerFragment : BaseFragment() {
                 binding.startButton.text = getString(R.string.start_focus)
                 binding.pauseButton.visibility = View.GONE
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
+                (activity as? MainActivity)?.showBottomNavigation()
                 context?.let {
                     if (state.notificationsEnabled) {
                         NotificationUtil.showTimerCompleteNotification(
@@ -148,6 +153,7 @@ class TimerFragment : BaseFragment() {
                 }
                 binding.pauseButton.visibility = View.GONE
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
+                (activity as? MainActivity)?.showBottomNavigation()
             }
         }
     }
