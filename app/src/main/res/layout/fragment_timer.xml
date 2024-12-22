@@ -9,8 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="24dp"
-        android:paddingBottom="24dp">
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
 
         <Space
             android:id="@+id/statusBarSpace"
@@ -22,10 +22,10 @@
             android:id="@+id/timerTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="64sp"
+            android:textSize="56sp"
             android:textStyle="bold"
             android:textColor="?attr/colorOnBackground"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintBottom_toTopOf="@id/treeImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
             android:id="@+id/progressIndicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:indicatorSize="320dp"
+            app:indicatorSize="280dp"
             app:trackThickness="4dp"
             app:trackColor="?attr/colorSurfaceVariant"
             app:indicatorColor="?attr/colorPrimary"
@@ -47,9 +47,9 @@
 
         <ImageView
             android:id="@+id/treeImage"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
             app:layout_constraintBottom_toTopOf="@id/treeStateText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
             android:id="@+id/treeStateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:textAppearance="?attr/textAppearanceBody1"
             android:textColor="?attr/colorOnBackground"
             app:layout_constraintBottom_toTopOf="@id/statsCard"
@@ -71,9 +71,10 @@
             android:id="@+id/statsCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="2dp"
             app:layout_constraintBottom_toTopOf="@id/buttonContainer"
@@ -84,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="16dp">
+                android:padding="12dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -180,7 +181,7 @@
             android:id="@+id/buttonContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="16dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
