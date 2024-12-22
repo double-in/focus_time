@@ -30,29 +30,18 @@ class TimerViewModel @Inject constructor(
 
     init {
         _uiState.value = TimerUiState()
-        loadStatistics()
+        loadTotalTrees()
     }
 
-    private fun loadStatistics() {
+    private fun loadTotalTrees() {
         viewModelScope.launch {
             try {
-                val totalMinutes = repository.getTotalFocusTime() / 60
-                val todaySessions = repository.getTodaySessionsCount()
-                val totalSessions = repository.getTotalSessionsCount()
                 val totalTrees = repository.getTreesPlanted()
-                
                 _uiState.value = _uiState.value?.copy(
-                    statistics = TimerStatistics(
-                        todaySessions = todaySessions,
-                        totalSessions = totalSessions,
-                        totalMinutes = totalMinutes
-                    ),
                     totalTrees = totalTrees
                 )
             } catch (e: Exception) {
-                // 如果发生错误，使用默认值
                 _uiState.value = _uiState.value?.copy(
-                    statistics = TimerStatistics(),
                     totalTrees = 0
                 )
             }
@@ -149,7 +138,7 @@ class TimerViewModel @Inject constructor(
         }
         
         resetTimer()
-        loadStatistics()
+        loadTotalTrees()
     }
 
     private fun saveSession(completed: Boolean) {

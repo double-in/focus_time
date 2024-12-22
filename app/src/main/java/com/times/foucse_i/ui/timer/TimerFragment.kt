@@ -86,12 +86,6 @@ class TimerFragment : BaseFragment() {
         // 更新进度条（带动画）
         animateProgress(state.progress)
         
-        // 更新统计信息
-        binding.todaySessionsText.text = state.statistics.todaySessions.toString()
-        binding.totalSessionsText.text = state.statistics.totalSessions.toString()
-        binding.totalMinutesText.text = state.statistics.totalMinutes.toString()
-        binding.totalTreesText.text = state.totalTrees.toString()
-
         // 更新树的状态（带动画）
         animateTreeState(state.treeState)
         

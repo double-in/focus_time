@@ -6,7 +6,6 @@ data class TimerUiState(
     val timerState: TimerState = TimerState.Idle,
     val remainingTime: Long = FocusPreferences.DEFAULT_FOCUS_MINUTES * 60L,
     val progress: Float = 1f,
-    val statistics: TimerStatistics = TimerStatistics(),
     val focusMinutes: Int = FocusPreferences.DEFAULT_FOCUS_MINUTES,
     val timerType: TimerType = TimerType.FOCUS,
     val completedPomodoros: Int = 0,
