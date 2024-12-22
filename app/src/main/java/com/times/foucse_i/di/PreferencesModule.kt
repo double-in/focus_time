@@ -1,7 +1,7 @@
 package com.times.foucse_i.di
 
 import android.content.Context
-import com.times.foucse_i.data.preferences.FocusPreferences
+import com.times.foucse_i.data.preferences.PreferencesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,9 @@ import javax.inject.Singleton
 object PreferencesModule {
     @Provides
     @Singleton
-    fun provideFocusPreferences(@ApplicationContext context: Context): FocusPreferences {
-        return FocusPreferences(context)
+    fun providePreferencesRepository(
+        @ApplicationContext context: Context
+    ): PreferencesRepository {
+        return PreferencesRepository(context)
     }
 } 

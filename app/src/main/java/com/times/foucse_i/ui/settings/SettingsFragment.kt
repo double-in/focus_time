@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.times.foucse_i.R
+import androidx.lifecycle.lifecycleScope
 import com.times.foucse_i.databinding.FragmentSettingsBinding
-import com.times.foucse_i.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class SettingsFragment : BaseFragment() {
-
+class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: SettingsViewModel by viewModels()
@@ -29,50 +29,81 @@ class SettingsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupSoundSettings()
-        setupThemeSettings()
+        setupObservers()
+        setupListeners()
     }
 
-    override fun isLightStatusBar(): Boolean = true
+    private fun setupObservers() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.uiState.collect { state ->
+                // Timer settings
+                binding.focusDurationSlider.value = state.focusDuration.toFloat()
+                binding.shortBreakDurationSlider.value = state.shortBreakDuration.toFloat()
+                binding.longBreakDurationSlider.value = state.longBreakDuration.toFloat()
+                binding.sessionsSlider.value = state.sessionsBeforeLongBreak.toFloat()
 
-    private fun setupSoundSettings() {
-        binding.soundEnabledSwitch.apply {
-            isChecked = viewModel.isSoundEnabled()
-            setOnCheckedChangeListener { _, isChecked ->
-                viewModel.setSoundEnabled(isChecked)
-            }
-        }
+                // Notification settings
+                binding.notificationsSwitch.isChecked = state.notificationsEnabled
+                binding.vibrationSwitch.isChecked = state.vibrationEnabled
+                binding.soundSwitch.isChecked = state.soundEnabled
+                binding.volumeSlider.value = state.volume
 
-        binding.volumeSlider.apply {
-            value = viewModel.getVolume()
-            addOnChangeListener { _, value, fromUser ->
-                if (fromUser) {
-                    viewModel.setVolume(value)
+                // Theme settings
+                when (state.theme) {
+                    AppCompatDelegate.MODE_NIGHT_NO -> binding.themeLightRadioButton.isChecked = true
+                    AppCompatDelegate.MODE_NIGHT_YES -> binding.themeDarkRadioButton.isChecked = true
+                    else -> binding.themeSystemRadioButton.isChecked = true
                 }
+
+                // Auto-start break
+                binding.autoStartBreakSwitch.isChecked = state.autoStartBreak
             }
         }
     }
 
-    private fun setupThemeSettings() {
-        val currentTheme = viewModel.getCurrentTheme()
-        when (currentTheme) {
-            AppCompatDelegate.MODE_NIGHT_NO -> binding.themeLight.isChecked = true
-            AppCompatDelegate.MODE_NIGHT_YES -> binding.themeDark.isChecked = true
-            else -> binding.themeSystem.isChecked = true
+    private fun setupListeners() {
+        // Timer settings
+        binding.focusDurationSlider.addOnChangeListener { _, value, fromUser ->
+            if (fromUser) viewModel.setFocusDuration(value.toInt())
+        }
+        binding.shortBreakDurationSlider.addOnChangeListener { _, value, fromUser ->
+            if (fromUser) viewModel.setShortBreakDuration(value.toInt())
+        }
+        binding.longBreakDurationSlider.addOnChangeListener { _, value, fromUser ->
+            if (fromUser) viewModel.setLongBreakDuration(value.toInt())
+        }
+        binding.sessionsSlider.addOnChangeListener { _, value, fromUser ->
+            if (fromUser) viewModel.setSessionsBeforeLongBreak(value.toInt())
         }
 
+        // Notification settings
+        binding.notificationsSwitch.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.setNotificationsEnabled(isChecked)
+        }
+        binding.vibrationSwitch.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.setVibrationEnabled(isChecked)
+        }
+        binding.soundSwitch.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.setSoundEnabled(isChecked)
+        }
+        binding.volumeSlider.addOnChangeListener { _, value, fromUser ->
+            if (fromUser) viewModel.setVolume(value)
+        }
+
+        // Theme settings
         binding.themeRadioGroup.setOnCheckedChangeListener { _, checkedId ->
-            when (checkedId) {
-                binding.themeLight.id -> {
-                    viewModel.setTheme(AppCompatDelegate.MODE_NIGHT_NO)
-                }
-                binding.themeDark.id -> {
-                    viewModel.setTheme(AppCompatDelegate.MODE_NIGHT_YES)
-                }
-                binding.themeSystem.id -> {
-                    viewModel.setTheme(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-                }
+            val theme = when (checkedId) {
+                binding.themeLightRadioButton.id -> AppCompatDelegate.MODE_NIGHT_NO
+                binding.themeDarkRadioButton.id -> AppCompatDelegate.MODE_NIGHT_YES
+                else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
             }
+            viewModel.setTheme(theme)
+            AppCompatDelegate.setDefaultNightMode(theme)
+        }
+
+        // Auto-start break
+        binding.autoStartBreakSwitch.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.setAutoStartBreak(isChecked)
         }
     }
 
