@@ -38,6 +38,7 @@ class SettingsFragment : Fragment() {
             viewModel.uiState.collect { state ->
                 // Timer settings
                 binding.focusDurationSlider.value = state.focusDuration.toFloat()
+                binding.customTimeEditText.setText(state.focusDuration.toString())
                 binding.shortBreakDurationSlider.value = state.shortBreakDuration.toFloat()
                 binding.longBreakDurationSlider.value = state.longBreakDuration.toFloat()
                 binding.sessionsSlider.value = state.sessionsBeforeLongBreak.toFloat()
@@ -64,8 +65,25 @@ class SettingsFragment : Fragment() {
     private fun setupListeners() {
         // Timer settings
         binding.focusDurationSlider.addOnChangeListener { _, value, fromUser ->
-            if (fromUser) viewModel.setFocusDuration(value.toInt())
+            if (fromUser) {
+                viewModel.setFocusDuration(value.toInt())
+                binding.customTimeEditText.setText(value.toInt().toString())
+            }
         }
+
+        binding.customTimeEditText.setOnFocusChangeListener { _, hasFocus ->
+            if (!hasFocus) {
+                val customTime = binding.customTimeEditText.text.toString().toIntOrNull()
+                if (customTime != null && customTime in 1..120) {
+                    viewModel.setFocusDuration(customTime)
+                    binding.focusDurationSlider.value = customTime.toFloat()
+                } else {
+                    val currentValue = binding.focusDurationSlider.value.toInt()
+                    binding.customTimeEditText.setText(currentValue.toString())
+                }
+            }
+        }
+
         binding.shortBreakDurationSlider.addOnChangeListener { _, value, fromUser ->
             if (fromUser) viewModel.setShortBreakDuration(value.toInt())
         }

@@ -6,18 +6,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.times.foucse_i.data.preferences.FocusPreferences
+import com.times.foucse_i.data.preferences.PreferencesRepository
 import com.times.foucse_i.data.repository.FocusRepository
 import com.times.foucse_i.util.SoundUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class TimerViewModel @Inject constructor(
     private val repository: FocusRepository,
+    private val preferencesRepository: PreferencesRepository,
     @ApplicationContext private val context: Context
 ) : ViewModel() {
 
@@ -31,6 +34,17 @@ class TimerViewModel @Inject constructor(
     init {
         _uiState.value = TimerUiState()
         loadTotalTrees()
+        loadSettings()
+    }
+
+    private fun loadSettings() {
+        viewModelScope.launch {
+            val focusDuration = preferencesRepository.focusDuration.first()
+            _uiState.value = _uiState.value?.copy(
+                focusMinutes = focusDuration,
+                remainingTime = focusDuration * 60L
+            )
+        }
     }
 
     private fun loadTotalTrees() {
@@ -66,21 +80,30 @@ class TimerViewModel @Inject constructor(
             return
         }
 
-        initialDuration = currentState.focusMinutes * 60L
-        remainingTime = initialDuration
-
-        _uiState.value = currentState.copy(
-            timerState = TimerState.Running,
-            remainingTime = remainingTime
-        )
-
-        timerJob = viewModelScope.launch {
-            while (remainingTime > 0) {
-                updateProgress()
-                delay(1000)
-                remainingTime--
+        viewModelScope.launch {
+            val focusDuration = when (currentState.timerType) {
+                TimerType.FOCUS -> preferencesRepository.focusDuration.first()
+                TimerType.SHORT_BREAK -> preferencesRepository.shortBreakDuration.first()
+                TimerType.LONG_BREAK -> preferencesRepository.longBreakDuration.first()
             }
-            onTimerComplete()
+            
+            initialDuration = focusDuration * 60L
+            remainingTime = initialDuration
+
+            _uiState.value = currentState.copy(
+                timerState = TimerState.Running,
+                remainingTime = remainingTime,
+                focusMinutes = focusDuration
+            )
+
+            timerJob = viewModelScope.launch {
+                while (remainingTime > 0) {
+                    updateProgress()
+                    delay(1000)
+                    remainingTime--
+                }
+                onTimerComplete()
+            }
         }
     }
 
@@ -155,12 +178,16 @@ class TimerViewModel @Inject constructor(
     private fun resetTimer() {
         remainingTime = 0
         initialDuration = 0
-        _uiState.value = _uiState.value?.copy(
-            timerState = TimerState.Idle,
-            remainingTime = FocusPreferences.DEFAULT_FOCUS_MINUTES * 60L,
-            progress = 0f,
-            treeState = TreeGrowthState.SEED
-        )
+        viewModelScope.launch {
+            val focusDuration = preferencesRepository.focusDuration.first()
+            _uiState.value = _uiState.value?.copy(
+                timerState = TimerState.Idle,
+                remainingTime = focusDuration * 60L,
+                focusMinutes = focusDuration,
+                progress = 0f,
+                treeState = TreeGrowthState.SEED
+            )
+        }
     }
 
     private fun updateProgress() {
