@@ -10,5 +10,9 @@ data class TimerUiState(
     val timerType: TimerType = TimerType.FOCUS,
     val completedPomodoros: Int = 0,
     val treeState: TreeGrowthState = TreeGrowthState.SEED,
-    val totalTrees: Int = 0
+    val totalTrees: Int = 0,
+    val notificationsEnabled: Boolean = FocusPreferences.DEFAULT_NOTIFICATIONS_ENABLED,
+    val vibrationEnabled: Boolean = FocusPreferences.DEFAULT_VIBRATION_ENABLED,
+    val soundEnabled: Boolean = FocusPreferences.DEFAULT_SOUND_ENABLED,
+    val volume: Float = FocusPreferences.DEFAULT_VOLUME
 ) 

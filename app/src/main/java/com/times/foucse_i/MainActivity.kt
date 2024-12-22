@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.times.foucse_i.databinding.ActivityMainBinding
+import com.times.foucse_i.util.NotificationUtil
 import com.times.foucse_i.util.WindowUtil
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         setupNavigation()
         setupSystemBars()
+        NotificationUtil.createNotificationChannel(this)
     }
 
     private fun setupNavigation() {

@@ -140,28 +140,55 @@ class TimerViewModel @Inject constructor(
     private fun onTimerComplete() {
         val currentState = _uiState.value ?: return
         
-        when (currentState.timerType) {
-            TimerType.FOCUS -> {
-                SoundUtil.playTimerCompleteSound(context)
-                saveSession(completed = true)
-                _uiState.value = currentState.copy(
-                    timerState = TimerState.Finished.Focus
-                )
+        viewModelScope.launch {
+            val notificationsEnabled = preferencesRepository.notificationsEnabled.first()
+            val soundEnabled = preferencesRepository.soundEnabled.first()
+            val vibrationEnabled = preferencesRepository.vibrationEnabled.first()
+            val volume = preferencesRepository.volume.first()
+
+            when (currentState.timerType) {
+                TimerType.FOCUS -> {
+                    if (soundEnabled) {
+                        SoundUtil.playTimerCompleteSound(context)
+                    }
+                    saveSession(completed = true)
+                    _uiState.value = currentState.copy(
+                        timerState = TimerState.Finished.Focus,
+                        notificationsEnabled = notificationsEnabled,
+                        soundEnabled = soundEnabled,
+                        vibrationEnabled = vibrationEnabled,
+                        volume = volume
+                    )
+                }
+                TimerType.SHORT_BREAK -> {
+                    if (soundEnabled) {
+                        SoundUtil.playTimerCompleteSound(context)
+                    }
+                    _uiState.value = currentState.copy(
+                        timerState = TimerState.Finished.ShortBreak,
+                        notificationsEnabled = notificationsEnabled,
+                        soundEnabled = soundEnabled,
+                        vibrationEnabled = vibrationEnabled,
+                        volume = volume
+                    )
+                }
+                TimerType.LONG_BREAK -> {
+                    if (soundEnabled) {
+                        SoundUtil.playTimerCompleteSound(context)
+                    }
+                    _uiState.value = currentState.copy(
+                        timerState = TimerState.Finished.LongBreak,
+                        notificationsEnabled = notificationsEnabled,
+                        soundEnabled = soundEnabled,
+                        vibrationEnabled = vibrationEnabled,
+                        volume = volume
+                    )
+                }
             }
-            TimerType.SHORT_BREAK -> {
-                _uiState.value = currentState.copy(
-                    timerState = TimerState.Finished.ShortBreak
-                )
-            }
-            TimerType.LONG_BREAK -> {
-                _uiState.value = currentState.copy(
-                    timerState = TimerState.Finished.LongBreak
-                )
-            }
+            
+            resetTimer()
+            loadTotalTrees()
         }
-        
-        resetTimer()
-        loadTotalTrees()
     }
 
     private fun saveSession(completed: Boolean) {

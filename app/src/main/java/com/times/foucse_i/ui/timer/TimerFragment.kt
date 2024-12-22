@@ -111,13 +111,16 @@ class TimerFragment : BaseFragment() {
                 binding.pauseButton.visibility = View.GONE
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
                 context?.let {
-                    SoundUtil.playTimerCompleteSound(it)
-                    NotificationUtil.showTimerCompleteNotification(
-                        it,
-                        state.focusMinutes,
-                        state.totalTrees
-                    )
-                    NotificationUtil.vibrate(it)
+                    if (state.notificationsEnabled) {
+                        NotificationUtil.showTimerCompleteNotification(
+                            it,
+                            state.focusMinutes,
+                            state.totalTrees
+                        )
+                    }
+                    if (state.vibrationEnabled) {
+                        NotificationUtil.vibrate(it)
+                    }
                 }
             }
             is TimerState.Finished.ShortBreak, is TimerState.Finished.LongBreak -> {
@@ -125,13 +128,16 @@ class TimerFragment : BaseFragment() {
                 binding.pauseButton.visibility = View.GONE
                 activity?.window?.let { WindowUtil.exitFocusMode(it) }
                 context?.let {
-                    SoundUtil.playTimerCompleteSound(it)
-                    NotificationUtil.showTimerCompleteNotification(
-                        it,
-                        state.focusMinutes,
-                        state.totalTrees
-                    )
-                    NotificationUtil.vibrate(it)
+                    if (state.notificationsEnabled) {
+                        NotificationUtil.showTimerCompleteNotification(
+                            it,
+                            state.focusMinutes,
+                            state.totalTrees
+                        )
+                    }
+                    if (state.vibrationEnabled) {
+                        NotificationUtil.vibrate(it)
+                    }
                 }
             }
             is TimerState.Idle -> {
