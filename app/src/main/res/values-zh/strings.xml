@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Timer States -->
+    <string name="app_name">专注时钟</string>
+    
+    <!-- Timer States -->
+    <string name="stop">停止</string>
+    <string name="resume">继续</string>
+    <string name="pause">暂停</string>
+    <string name="start_break">开始休息</string>
+    <string name="start_focus">开始专注</string>
+    <string name="plant_a_tree">种下一棵树</string>
+    <string name="take_a_break">休息一下</string>
+    <string name="take_a_long_break">长休息</string>
+    
+    <!-- Hints -->
+    <string name="tap_to_set_focus_duration">点击设置专注时长</string>
+    <string name="short_break_hint">短休息（5分钟）</string>
+    <string name="long_break_hint">长休息（15分钟）</string>
+    
+    <!-- Tree States -->
+    <string name="tree_state_seed">种子</string>
+    <string name="tree_state_sprout">发芽</string>
+    <string name="tree_state_sapling">幼苗</string>
+    <string name="tree_state_growing">生长中</string>
+    <string name="tree_state_mature">成熟</string>
+    <string name="tree_state_blooming">开花</string>
+    
+    <!-- Statistics -->
+    <string name="today_sessions">今日专注</string>
+    <string name="total_sessions">总专注次数</string>
+    <string name="total_minutes">总专注时长</string>
+    <string name="total_trees">总种植树木</string>
+    
+    <!-- Notifications -->
+    <string name="timer_complete">专注完成</string>
+    <string name="focus_complete">太棒了！你已经专注了%1$d分钟。</string>
+    <string name="focus_complete_short">太棒了！你已经专注了%1$d分钟，种下了%2$d棵树。</string>
+    <string name="focus_complete_long">太棒了！你已经专注了%1$d小时%2$d分钟，种下了%3$d棵树。</string>
+    <string name="channel_name">专注时钟</string>
+    <string name="channel_description">专注时钟的通知提醒</string>
+
+    <!-- Settings -->
+    <string name="timer_settings">计时器设置</string>
+    <string name="focus_duration">专注时长（分钟）</string>
+    <string name="short_break_duration">短休息时长（分钟）</string>
+    <string name="long_break_duration">长休息时长（分钟）</string>
+    <string name="sessions_before_long_break">长休息前的专注次数</string>
+    <string name="auto_start_break">自动开始休息</string>
+    
+    <!-- Notification Settings -->
+    <string name="notification_settings">通知设置</string>
+    <string name="enable_notifications">启用通知</string>
+    <string name="enable_vibration">启用振动</string>
+    <string name="enable_sound">启用声音</string>
+    <string name="sound_volume">声音音量</string>
+    
+    <!-- Theme Settings -->
+    <string name="theme_settings">主题设置</string>
+    <string name="light_theme">浅色主题</string>
+    <string name="dark_theme">深色主题</string>
+    <string name="system_theme">跟随系统</string>
+
+    <!-- Statistics -->
+    <string name="overview">概览</string>
+    <string name="total_focus_time">总专注时间</string>
+    <string name="time_statistics">时间统计</string>
+    <string name="this_week">本周</string>
+    <string name="this_month">本月</string>
+    <string name="average_session">平均时长</string>
+    <string name="longest_session">最长专注</string>
+    <string name="tree_garden">树木花园</string>
+    <string name="recent_sessions">最近专注</string>
+
+    <!-- Focus Lock -->
+    <string name="usage_stats_permission_title">需要使用情况访问权限</string>
+    <string name="usage_stats_permission_message">为了帮助您保持专注，我们需要使用情况访问权限来检测其他应用的使用。请在设置中授予此权限。</string>
+    <string name="dnd_permission_title">需要勿扰模式权限</string>
+    <string name="dnd_permission_message">为了帮助您保持专注，我们需要勿扰模式权限来减少干扰。请在设置中授予此权限。</string>
+    <string name="settings">设置</string>
+    <string name="cancel">取消</string>
+    <string name="stay_focused">保持专注</string>
+    <string name="app_blocked_message">您正在尝试打开 %1$s。现在是专注时间，请继续保持专注！</string>
+    <string name="return_to_focus">返回专注</string>
+    <string name="another_app">另一个应用</string>
+</resources> 
