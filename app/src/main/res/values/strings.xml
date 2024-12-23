@@ -2,6 +2,11 @@
 <resources>
     <string name="app_name">Focus Timer</string>
     
+    <!-- Navigation -->
+    <string name="nav_timer">Timer</string>
+    <string name="nav_stats">Statistics</string>
+    <string name="nav_settings">Settings</string>
+    
     <!-- Timer States -->
     <string name="stop">Stop</string>
     <string name="resume">Resume</string>
@@ -27,9 +32,18 @@
     
     <!-- Statistics -->
     <string name="today_sessions">Today\'s Sessions</string>
-    <string name="total_sessions">Total Sessions</string>
     <string name="total_minutes">Total Minutes</string>
     <string name="total_trees">Total Trees</string>
+    <string name="overview">Overview</string>
+    <string name="total_focus_time">Total Focus Time</string>
+    <string name="total_sessions">Total Sessions</string>
+    <string name="time_statistics">Time Statistics</string>
+    <string name="this_week">This Week</string>
+    <string name="this_month">This Month</string>
+    <string name="average_session">Average Session</string>
+    <string name="longest_session">Longest Session</string>
+    <string name="tree_garden">Tree Garden</string>
+    <string name="recent_sessions">Recent Sessions</string>
     
     <!-- Notifications -->
     <string name="timer_complete">Timer Complete</string>
@@ -46,6 +60,7 @@
     <string name="long_break_duration">Long Break Duration (minutes)</string>
     <string name="sessions_before_long_break">Sessions before Long Break</string>
     <string name="auto_start_break">Auto-start Break</string>
+    <string name="custom_time">Custom Time</string>
     
     <!-- Notification Settings -->
     <string name="notification_settings">Notification Settings</string>
@@ -59,17 +74,6 @@
     <string name="light_theme">Light Theme</string>
     <string name="dark_theme">Dark Theme</string>
     <string name="system_theme">System Default</string>
-
-    <!-- Statistics -->
-    <string name="overview">Overview</string>
-    <string name="total_focus_time">Total Focus Time</string>
-    <string name="time_statistics">Time Statistics</string>
-    <string name="this_week">This Week</string>
-    <string name="this_month">This Month</string>
-    <string name="average_session">Average Session</string>
-    <string name="longest_session">Longest Session</string>
-    <string name="tree_garden">Tree Garden</string>
-    <string name="recent_sessions">Recent Sessions</string>
 
     <!-- Focus Lock -->
     <string name="usage_stats_permission_title">Usage Access Required</string>

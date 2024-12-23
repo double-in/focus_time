@@ -27,14 +27,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Timer Settings"
+                    android:text="@string/timer_settings"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     android:layout_marginBottom="16dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Focus Duration (minutes)" />
+                    android:text="@string/focus_duration" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -56,6 +56,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
+                        android:hint="@string/custom_time"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -72,7 +73,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Short Break Duration (minutes)" />
+                    android:text="@string/short_break_duration" />
 
                 <com.google.android.material.slider.Slider
                     android:id="@+id/shortBreakDurationSlider"
@@ -85,7 +86,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Long Break Duration (minutes)" />
+                    android:text="@string/long_break_duration" />
 
                 <com.google.android.material.slider.Slider
                     android:id="@+id/longBreakDurationSlider"
@@ -98,7 +99,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sessions before Long Break" />
+                    android:text="@string/sessions_before_long_break" />
 
                 <com.google.android.material.slider.Slider
                     android:id="@+id/sessionsSlider"
@@ -112,7 +113,7 @@
                     android:id="@+id/autoStartBreakSwitch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Auto-start Break" />
+                    android:text="@string/auto_start_break" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -133,7 +134,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notification Settings"
+                    android:text="@string/notification_settings"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     android:layout_marginBottom="16dp" />
 
@@ -141,24 +142,24 @@
                     android:id="@+id/notificationsSwitch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enable Notifications" />
+                    android:text="@string/enable_notifications" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:id="@+id/vibrationSwitch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enable Vibration" />
+                    android:text="@string/enable_vibration" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:id="@+id/soundSwitch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Enable Sound" />
+                    android:text="@string/enable_sound" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sound Volume" />
+                    android:text="@string/sound_volume" />
 
                 <com.google.android.material.slider.Slider
                     android:id="@+id/volumeSlider"
@@ -186,7 +187,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Theme Settings"
+                    android:text="@string/theme_settings"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     android:layout_marginBottom="16dp" />
 
@@ -200,19 +201,19 @@
                         android:id="@+id/themeLightRadioButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Light Theme" />
+                        android:text="@string/light_theme" />
 
                     <RadioButton
                         android:id="@+id/themeDarkRadioButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Dark Theme" />
+                        android:text="@string/dark_theme" />
 
                     <RadioButton
                         android:id="@+id/themeSystemRadioButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="System Default" />
+                        android:text="@string/system_theme" />
                 </RadioGroup>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

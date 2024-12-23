@@ -3,6 +3,11 @@
     <!-- Timer States -->
     <string name="app_name">专注时钟</string>
     
+    <!-- Navigation -->
+    <string name="nav_timer">计时器</string>
+    <string name="nav_stats">统计</string>
+    <string name="nav_settings">设置</string>
+    
     <!-- Timer States -->
     <string name="stop">停止</string>
     <string name="resume">继续</string>
@@ -28,7 +33,7 @@
     
     <!-- Statistics -->
     <string name="today_sessions">今日专注</string>
-    <string name="total_sessions">总专注次数</string>
+<!--    <string name="total_sessions">总专注次数</string>-->
     <string name="total_minutes">总专注时长</string>
     <string name="total_trees">总种植树木</string>
     
@@ -47,6 +52,7 @@
     <string name="long_break_duration">长休息时长（分钟）</string>
     <string name="sessions_before_long_break">长休息前的专注次数</string>
     <string name="auto_start_break">自动开始休息</string>
+    <string name="custom_time">自定义时间</string>
     
     <!-- Notification Settings -->
     <string name="notification_settings">通知设置</string>
@@ -64,6 +70,7 @@
     <!-- Statistics -->
     <string name="overview">概览</string>
     <string name="total_focus_time">总专注时间</string>
+    <string name="total_sessions">总专注次数</string>
     <string name="time_statistics">时间统计</string>
     <string name="this_week">本周</string>
     <string name="this_month">本月</string>
