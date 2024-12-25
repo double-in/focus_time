@@ -35,6 +35,20 @@ class TimerViewModel @Inject constructor(
         _uiState.value = TimerUiState()
         loadTotalTrees()
         loadSettings()
+        observeFocusDuration()
+    }
+
+    private fun observeFocusDuration() {
+        viewModelScope.launch {
+            preferencesRepository.focusDuration.collect { focusDuration ->
+                if (_uiState.value?.timerState is TimerState.Idle) {
+                    _uiState.value = _uiState.value?.copy(
+                        focusMinutes = focusDuration,
+                        remainingTime = focusDuration * 60L
+                    )
+                }
+            }
+        }
     }
 
     private fun loadSettings() {
