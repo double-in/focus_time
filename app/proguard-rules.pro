@@ -55,8 +55,8 @@
 }
 
 # Keep your app's data models
--keep class com.times.focus.data.** { *; }
--keep class com.times.focus.model.** { *; }
+-keep class com.times.foucse_i.data.** { *; }
+-keep class com.times.foucse_i.model.** { *; }
 
 # Preserve all annotations.
 -keepattributes *Annotation*

@@ -6,17 +6,17 @@
 
     <fragment
         android:id="@+id/navigation_timer"
-        android:name="com.times.focus.ui.timer.TimerFragment"
+        android:name="com.times.foucse_i.ui.timer.TimerFragment"
         android:label="Timer" />
 
     <fragment
         android:id="@+id/navigation_stats"
-        android:name="com.times.focus.ui.stats.StatsFragment"
+        android:name="com.times.foucse_i.ui.stats.StatsFragment"
         android:label="Statistics" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.times.focus.ui.settings.SettingsFragment"
+        android:name="com.times.foucse_i.ui.settings.SettingsFragment"
         android:label="Settings" />
 
 </navigation> 

@@ -71,7 +71,6 @@
                 </LinearLayout>
 
                 <TextView
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/short_break_duration" />
@@ -82,11 +81,9 @@
                     android:layout_height="wrap_content"
                     android:valueFrom="1"
                     android:valueTo="30"
-                    android:visibility="gone"
                     android:stepSize="1" />
 
                 <TextView
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/long_break_duration" />
@@ -97,11 +94,9 @@
                     android:layout_height="wrap_content"
                     android:valueFrom="1"
                     android:valueTo="30"
-                    android:visibility="gone"
                     android:stepSize="1" />
 
                 <TextView
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sessions_before_long_break" />
@@ -112,12 +107,10 @@
                     android:layout_height="wrap_content"
                     android:valueFrom="2"
                     android:valueTo="6"
-                    android:visibility="gone"
                     android:stepSize="1" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:id="@+id/autoStartBreakSwitch"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/auto_start_break" />
