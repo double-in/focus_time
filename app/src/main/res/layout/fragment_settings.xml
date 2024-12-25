@@ -27,9 +27,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text="@string/timer_settings"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:layout_marginBottom="16dp" />
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -39,25 +39,25 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <com.google.android.material.slider.Slider
                         android:id="@+id/focusDurationSlider"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:stepSize="1"
                         android:valueFrom="1"
-                        android:valueTo="120"
-                        android:stepSize="1" />
+                        android:valueTo="120" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/customTimeInput"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:hint="@string/custom_time"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        android:hint="@string/custom_time">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/customTimeEditText"
@@ -73,47 +73,54 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/short_break_duration" />
+                    android:text="@string/short_break_duration"
+                    android:visibility="gone" />
 
                 <com.google.android.material.slider.Slider
                     android:id="@+id/shortBreakDurationSlider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:stepSize="1"
                     android:valueFrom="1"
                     android:valueTo="30"
-                    android:stepSize="1" />
+                    android:visibility="gone" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/long_break_duration" />
+                    android:text="@string/long_break_duration"
+                    android:visibility="gone" />
 
                 <com.google.android.material.slider.Slider
                     android:id="@+id/longBreakDurationSlider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:stepSize="1"
                     android:valueFrom="1"
                     android:valueTo="30"
-                    android:stepSize="1" />
+                    android:visibility="gone" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/sessions_before_long_break" />
+                    android:text="@string/sessions_before_long_break"
+                    android:visibility="gone" />
 
                 <com.google.android.material.slider.Slider
                     android:id="@+id/sessionsSlider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:stepSize="1"
                     android:valueFrom="2"
                     android:valueTo="6"
-                    android:stepSize="1" />
+                    android:visibility="gone" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:id="@+id/autoStartBreakSwitch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/auto_start_break" />
+                    android:text="@string/auto_start_break"
+                    android:visibility="gone" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -134,9 +141,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text="@string/notification_settings"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:layout_marginBottom="16dp" />
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <com.google.android.material.switchmaterial.SwitchMaterial
                     android:id="@+id/notificationsSwitch"
@@ -165,9 +172,9 @@
                     android:id="@+id/volumeSlider"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:stepSize="0.1"
                     android:valueFrom="0"
-                    android:valueTo="1"
-                    android:stepSize="0.1" />
+                    android:valueTo="1" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -187,9 +194,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text="@string/theme_settings"
-                    android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:layout_marginBottom="16dp" />
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
 
                 <RadioGroup
                     android:id="@+id/themeRadioGroup"
