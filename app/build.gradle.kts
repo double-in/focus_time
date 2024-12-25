@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.times.foucse_i"
+    namespace = "com.times.focus"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.times.foucse_i"
+        applicationId = "com.times.focus"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
